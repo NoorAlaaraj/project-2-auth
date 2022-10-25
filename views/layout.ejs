@@ -4,21 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Express Auth</title>
+    <title>NOOR COFFEE BEANS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<style> 
+ 
+ ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+   background-color: rgb(159, 153, 153);
+  }
+  
+  li {
+    float: left;
+    padding: 20px;
+  }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+  } 
+  /*
+   li a:hover {
+    background-color: rgb(255, 255, 255);
+  }
+  h2{
+      font-size: 30px;
+    color: teal;
+  } */
+</style>
+
 <body>
     <nav>
         <ul>
             <% if(user){ %>
                 <li><a href="/users/profile">Profile</a></li>
                 <li><a href="/users/logout">Logout</a></li>
+                <li><a href="/users/home">HOME</a></li>
+                <li><a href="/users/coffee">COFFEE</a></li>
+                <li><a href="/users/sweets">SWEETS</a></li>
+                <li><a href="/users/shop">SHOP NOW</a></li>
+                <li><a href="/users/about">ABOUT</a></li>
+                <li><a href="/users/contact">CONTACT US</a></li> 
+
+                
             <% } else { %> 
                 <li><a href="/users/new">Sign Up</a></li>
                 <li><a href="/users/login">Login</a></li>
             <% } %>
         </ul>
     </nav>
-    <h1>Express Auth Boilerplate for Project 2</h1>
+
+    <!-- <h1>NOOR COFFEE BEANS</h1>
+    <h2> COFFEE BAR </h2> -->
+
     <%- body %> 
 </body>
 </html>

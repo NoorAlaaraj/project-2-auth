@@ -5,6 +5,30 @@ const cryptojs = require('crypto-js')
 require('dotenv').config()
 const bcrypt = require('bcrypt')
 
+router.get('/home', (req,res) => {
+    res.render('home.ejs')
+})
+
+router.get('/coffee', (req,res) => {
+    res.render('coffee.ejs')
+})
+
+router.get('/sweets', (req,res) => {
+    res.render('sweets.ejs')
+})
+
+router.get('/shop', (req,res) => {
+    res.render('shop.ejs')
+})
+
+router.get('/about', (req,res) => {
+    res.render('about.ejs')
+})
+
+router.get('/contact', (req,res) => {
+    res.render('contact.ejs')
+})
+
 router.get('/new', (req, res)=>{
     res.render('users/new.ejs')
 })

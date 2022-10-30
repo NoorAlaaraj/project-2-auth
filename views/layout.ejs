@@ -1,57 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOOR COFFEE BEANS</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOOR COFFEE BEANS</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet"></head>
+
 <style> 
- 
+
  ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-   background-color: rgb(159, 153, 153);
+   background-color: rgb(208, 163, 131);
   }
   
   li {
-    float: left;
-    padding: 20px;
+    display: inline;
+    justify-content: center;
+    padding-left: 30px;
   }
-  
-  li a {
-    display: block;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-  } 
-  /*
-   li a:hover {
-    background-color: rgb(255, 255, 255);
-  }
-  h2{
-      font-size: 30px;
-    color: teal;
-  } */
+/* 
+  a:link{
+    color: rgb(121, 46, 16) ;
+    text-decoration:none;
+} */
+
+li a {
+  /* display: block; */
+  color: rgb(121, 46, 16) ;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+} 
+
+nav{
+  text-align: center;
+}
+
 </style>
 
 <body>
+
     <nav>
         <ul>
             <% if(user){ %>
-                <li><a href="/users/profile">Profile</a></li>
-                <li><a href="/users/logout">Logout</a></li>
-                <li><a href="/users/home">HOME</a></li>
-                <li><a href="/users/coffee">COFFEE</a></li>
-                <li><a href="/users/sweets">SWEETS</a></li>
-                <li><a href="/users/shop">SHOP NOW</a></li>
-                <li><a href="/users/about">ABOUT</a></li>
-                <li><a href="/users/contact">CONTACT US</a></li> 
-
+              
+                  <li><a href="/users/profile">PROFILE</a></li>
+                  <li><a href="/users/logout">LOGOUT</a></li>
+                  <li><a href="/users/home">HOME</a></li>
+                  <li><a href="/users/coffee">COFFEE MENU</a></li>
+                  <li><a href="/users/sweets">SWEETS MENU</a></li>
+                  <li><a href="/users/shop">SHOP NOW</a></li>
+                  <li><a href="/users/about">ABOUT</a></li>
+                  <li><a href="/users/contact">CONTACT US</a></li> 
+                  <li><a href="/users/cart">🛒</a></li>
+                
+                <!-- <ul class="navbar-right">
+                  <li><a href="users/cart"></span>🛒</a></li>
+                </ul> -->
                 
             <% } else { %> 
                 <li><a href="/users/new">Sign Up</a></li>
@@ -59,7 +68,7 @@
             <% } %>
         </ul>
     </nav>
-
+    
     <!-- <h1>NOOR COFFEE BEANS</h1>
     <h2> COFFEE BAR </h2> -->
 

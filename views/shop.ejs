@@ -1,0 +1,64 @@
+<%  allProducts.forEach(p => { %>
+    
+     <li><%= p.orderId %></li><br>
+     <img src="<%= p.photo %>" style="height:200px;width:200px;" >
+     <li><%= p.description %></li><br>
+     <li><%= p.price %> BHD </li><br>
+
+        <form action="/users/cart/<%= p.id %>" method="post">
+            <button type="submit">ADD TO CART</button>
+        </form>
+<%   })  %>
+
+<style>
+    body {
+        text-align: center;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    img {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: auto;
+        margin-right: auto;
+        width: 350px;
+        height: 350px;
+    }
+
+    .orderId{
+        font-family: 'Barlow Condensed', sans-serif;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .description {
+        font-family: 'Barlow Condensed', sans-serif;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .price {
+        font-family: 'Barlow Condensed', sans-serif;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 900;
+    }
+
+    button {
+        background-color: beige;
+        font-family: 'Barlow Condensed', sans-serif;
+        border: 2px solid rgb(121, 46, 16) ;
+        font-weight: bold;
+        color: rgb(121, 46, 16) ;
+        padding: 10px 16px;
+        text-align: center;
+        /* text-decoration: none; */
+        font-size: 25px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+</style>
+

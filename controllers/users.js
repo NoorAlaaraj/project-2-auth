@@ -4,6 +4,7 @@ const router = express.Router()
 const cryptojs = require('crypto-js')
 require('dotenv').config()
 const bcrypt = require('bcrypt')
+const user = require('../models/user')
 
 router.get('/home', (req,res) => {
     res.render('home.ejs')
@@ -13,12 +14,78 @@ router.get('/coffee', (req,res) => {
     res.render('coffee.ejs')
 })
 
+
+
+// router.get('/cart', async (req, res)=>{
+
+//     // await db.postmessage.findOrCreate({ where: { name: req.body.name})
+    
+//         const posts = await db.post.findAll({
+//             include: [db.order]
+//         })
+    
+//         res.render('cart.ejs', {users})
+//     })
+
+router.get('/cart', async (req, res)=>{
+    
+    let user = await db.user.findByPk(res.locals.user.id, {
+        include: [{
+            model: db.order,
+            include: [db.product]
+        }]
+    })
+
+    res.json(user)
+    // res.redirect('/cart')
+    // res.render('cart.ejs')
+})
+
+router.post('/cart/:productId', async (req,res) => {
+
+    let user = res.locals.user
+    let product = await db.product.findOne({
+        id: req.params.productId
+    })
+    // create new order
+    let newOrder = await db.order.create({
+        // userId: user.id,
+        orderComplete: 'false'
+    })
+    let newProductOrder = await db.ProductOrder.findOrCreate({
+        where: {
+            orderId: newOrder.id,
+            productId: req.params.productId
+        }
+    })
+
+    await user.addOrder(newOrder)
+    // await user.addProduct(product)
+
+    res.redirect('/users/cart')
+    // add product to an order
+    // add order to the user
+
+})
+
+
+
 router.get('/sweets', (req,res) => {
     res.render('sweets.ejs')
 })
 
-router.get('/shop', (req,res) => {
-    res.render('shop.ejs')
+router.get('/shop', async (req,res) => {
+
+    try {
+        let allProducts = await db.product.findAll() 
+        res.render('shop.ejs', {allProducts})
+        
+    } catch(err) {
+        res.json(err)
+    }
+})
+router.get('/profile', (req, res)=>{
+    res.render('users/profile.ejs')
 })
 
 router.get('/about', (req,res) => {
@@ -27,6 +94,10 @@ router.get('/about', (req,res) => {
 
 router.get('/contact', (req,res) => {
     res.render('contact.ejs')
+})
+
+router.get('/cart', (req, res)=>{
+    res.render('users/cart.ejs')
 })
 
 router.get('/new', (req, res)=>{
@@ -76,8 +147,6 @@ router.get('/logout', (req, res)=>{
     res.redirect('/')
 })
 
-router.get('/profile', (req, res)=>{
-    res.render('users/profile.ejs')
-})
+router.get('/')
 
 module.exports = router

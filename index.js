@@ -8,6 +8,7 @@ require('dotenv').config()
 
 // MIDDLEWARE
 app.set('view engine', 'ejs')
+app.use(express.static('public'))
 app.use(ejsLayouts)
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
@@ -25,6 +26,7 @@ app.use(async (req, res, next)=>{
 
 // CONTROLLERS
 app.use('/users', require('./controllers/users'))
+app.use('/cart', require('./controllers/cart'))
 // app.use('/coffee', require('./controllers/coffee'))
 
 

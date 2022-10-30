@@ -1,0 +1,13 @@
+<h1>Cart Details</h1>
+
+<% orders.forEach(o => { %>
+
+<a href="/shop/<%= o.orderId %>">
+    <h3><%= p.price %></h3>
+</a>
+
+<!-- <form method="POST" action="/shop/<%= p.orderId %>?_method=DELETE">
+    <button type="submit">delete</button>
+</form> -->
+
+<% })  %>
